@@ -1,0 +1,87 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class {{ class }} extends EditableController
+{
+    protected $defaultSortBy = 'id';
+    protected $defaultSortOrder = 'asc';
+    protected $sortByOptions = [
+        'id' => [],
+    ];
+
+    public function list(CompanyRepository $companyRepository, Request $request)
+    {
+        $this->authorize('viewAny',Company::class);
+
+        $params = $this->parseParams($request);
+
+        return CompanyResource::withoutTranslations($companyRepository->list($params))
+            ->additional($this->listAdditionalData($request, $params));
+    }
+
+    public function item(Company $company)
+    {
+        $this->authorize('view',Company::class);
+
+        return CompanyResource::make($company);
+    }
+
+    public function create(Request $request, CompanyRepository $companyRepository)
+    {
+        $this->authorize('create',Company::class);
+
+        $data = $this->validate($request, $this->getRules($request));
+
+        $newId = $companyRepository->create($data);
+
+        if ($newId) {
+            return [
+                'newRecordId' => $newId,
+            ];
+        }
+
+        return $this->apiError('Could not create record');
+    }
+
+    public function update(Request $request, CompanyRepository $companyRepository, Company $company)
+    {
+        $this->authorize('update', $company);
+
+        $data = $this->validate($request, $this->getRules($request));
+
+        $updated = $companyRepository->update($company, $data);
+
+        if ($updated) {
+            return $this->apiSuccess();
+        }
+
+        return $this->apiError('Could not update record');
+    }
+
+    public function destroy(CompanyRepository $companyRepository, Company $company)
+    {
+        $this->authorize('delete',$company);
+
+        $destroyed = $companyRepository->destroy($company);
+
+        if ($destroyed) {
+            return $this->apiSuccess();
+        }
+
+        return $this->apiError('Could not remove record');
+    }
+
+    /**
+     * @return array
+     */
+    private function getRules()
+    {
+        return [
+            'name' => 'required|string|max:50',
+        ];
+    }
+}

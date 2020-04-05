@@ -1,0 +1,12 @@
+{
+    "name": "phobo/broth",
+    "description": "No description",
+    "authors": [
+        {
+            "name": "phob0",
+            "email": "phob0@protonmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
