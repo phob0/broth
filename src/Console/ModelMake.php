@@ -4,38 +4,36 @@ namespace Phobo\Broth\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Exception\InvalidArgumentException;
-use Symfony\Component\Console\Input\InputOption;
 
-class ControllerMake extends GeneratorCommand
+class ModelMake extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'broth:controller';
+    protected $name = 'broth:model';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new broth controller';
+    protected $description = 'Create a new broth model';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Controller';
+    protected $type = 'Model';
 
     /**
      * The name of class being generated.
      *
      * @var string
      */
-    private $controllerClass;
+    private $modelClass;
 
     /**
      * The name of class being generated.
@@ -50,9 +48,10 @@ class ControllerMake extends GeneratorCommand
      * @return bool|null
      */
     public function fire(){
-        $this->setControllerClass();
 
-        $path = $this->getPath($this->controllerClass);
+        $this->setModelClass();
+
+        $path = $this->getPath($this->modelClass);
 
         if ($this->alreadyExists($this->getNameInput())) {
             $this->error($this->type.' already exists!');
@@ -62,11 +61,11 @@ class ControllerMake extends GeneratorCommand
 
         $this->makeDirectory($path);
 
-        $this->files->put($path, $this->buildClass($this->controllerClass));
+        $this->files->put($path, $this->buildClass($this->modelClass));
 
         $this->info($this->type.' created successfully.');
 
-        $this->line("<info>Created Controller :</info> $this->controllerClass");
+        $this->line("<info>Created Model :</info> $this->modelClass");
     }
 
     /**
@@ -74,7 +73,7 @@ class ControllerMake extends GeneratorCommand
      *
      * @return  void
      */
-    private function setControllerClass()
+    private function setModelClass()
     {
         $name = ucwords(strtolower($this->argument('name')));
 
@@ -82,28 +81,9 @@ class ControllerMake extends GeneratorCommand
 
         $modelClass = $this->parseName($name);
 
-        $this->controllerClass = $modelClass . 'Controller';
+        $this->modelClass = $modelClass;
 
         return $this;
-    }
-
-    /**
-     * Replace the class name for the given stub.
-     *
-     * @param  string  $stub
-     * @param  string  $name
-     * @return string
-     */
-    protected function replaceClass($stub, $name)
-    {
-        if(!$this->argument('name')){
-            throw new InvalidArgumentException("Missing required argument model name");
-        }
-
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-
-        return str_replace(['{{ class }}', 'Dummy', 'dummy'], [$class, $this->option('class-name'), strtolower($this->option('class-name'))], $stub);
-
     }
 
     /**
@@ -114,7 +94,7 @@ class ControllerMake extends GeneratorCommand
      */
     protected function getStub()
     {
-        return  $this->resolveStubPath('/stubs/controller.stub');
+        return  $this->resolveStubPath('/stubs/model.stub');
     }
 
     /**
@@ -138,7 +118,7 @@ class ControllerMake extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.'\Http\Controllers';
+        return $rootNamespace;
     }
 
     /**
@@ -153,15 +133,4 @@ class ControllerMake extends GeneratorCommand
         ];
     }
 
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['class-name', null, InputOption::VALUE_OPTIONAL, 'Name of the classes'],
-        ];
-    }
 }

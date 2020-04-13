@@ -14,7 +14,10 @@ class BrothServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            Console\ControllerMake::class
+            Console\ControllerMake::class,
+            Console\RepositoryMake::class,
+            Console\ModelMake::class,
+            Console\ResourceMake::class
         ]);
     }
 
