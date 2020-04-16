@@ -1,7 +1,7 @@
 # broth
 
-composer require phobo/broth
+# composer require phobo/broth
 
-php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"
+# php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"
 
-enjoy
+# enjoy
