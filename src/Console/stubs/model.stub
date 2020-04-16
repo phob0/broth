@@ -1,0 +1,21 @@
+<?php
+
+namespace App;
+
+use Spatie\Translatable\HasTranslations;
+
+class {{ class }} extends EditableModel
+{
+    use HasTranslations;
+
+    protected $fillable = [
+        'name'
+    ];
+
+    protected $translatable = [
+        'name'
+    ];
+
+    protected $with = [];
+
+}

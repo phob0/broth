@@ -2,7 +2,9 @@
 
 namespace {{ namespace }};
 
-use {{ rootNamespace }}Http\Controllers\Controller;
+use App\Http\Resources\DummyResource;
+use App\Repositories\DummyRepository;
+use App\Dummy;
 use Illuminate\Http\Request;
 
 class {{ class }} extends EditableController
@@ -13,30 +15,30 @@ class {{ class }} extends EditableController
         'id' => [],
     ];
 
-    public function list(CompanyRepository $companyRepository, Request $request)
+    public function list(DummyRepository $dummyRepository, Request $request)
     {
-        $this->authorize('viewAny',Company::class);
+        $this->authorize('viewAny',Dummy::class);
 
         $params = $this->parseParams($request);
 
-        return CompanyResource::withoutTranslations($companyRepository->list($params))
+        return DummyResource::withoutTranslations($dummyRepository->list($params))
             ->additional($this->listAdditionalData($request, $params));
     }
 
-    public function item(Company $company)
+    public function item(Dummy $dummy)
     {
-        $this->authorize('view',Company::class);
+        $this->authorize('view',Dummy::class);
 
-        return CompanyResource::make($company);
+        return DummyResource::make($dummy);
     }
 
-    public function create(Request $request, CompanyRepository $companyRepository)
+    public function create(Request $request, DummyRepository $dummyRepository)
     {
-        $this->authorize('create',Company::class);
+        $this->authorize('create',Dummy::class);
 
         $data = $this->validate($request, $this->getRules($request));
 
-        $newId = $companyRepository->create($data);
+        $newId = $dummyRepository->create($data);
 
         if ($newId) {
             return [
@@ -47,13 +49,13 @@ class {{ class }} extends EditableController
         return $this->apiError('Could not create record');
     }
 
-    public function update(Request $request, CompanyRepository $companyRepository, Company $company)
+    public function update(Request $request, DummyRepository $dummyRepository, Dummy $dummy)
     {
-        $this->authorize('update', $company);
+        $this->authorize('update', $dummy);
 
         $data = $this->validate($request, $this->getRules($request));
 
-        $updated = $companyRepository->update($company, $data);
+        $updated = $dummyRepository->update($dummy, $data);
 
         if ($updated) {
             return $this->apiSuccess();
@@ -62,11 +64,11 @@ class {{ class }} extends EditableController
         return $this->apiError('Could not update record');
     }
 
-    public function destroy(CompanyRepository $companyRepository, Company $company)
+    public function destroy(DummyRepository $dummyRepository, Dummy $dummy)
     {
-        $this->authorize('delete',$company);
+        $this->authorize('delete',$dummy);
 
-        $destroyed = $companyRepository->destroy($company);
+        $destroyed = $dummyRepository->destroy($dummy);
 
         if ($destroyed) {
             return $this->apiSuccess();

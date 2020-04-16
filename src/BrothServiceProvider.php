@@ -13,8 +13,15 @@ class BrothServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->commands([
-            Console\ControllerMake::class
+
+	$this->app->register('Phobo\Broth\BrothServiceProvider');
+        
+	$this->commands([
+            Console\ModuleMake::class,
+            Console\ControllerMake::class,
+            Console\RepositoryMake::class,
+            Console\ModelMake::class,
+            Console\ResourceMake::class
         ]);
     }
 
@@ -25,6 +32,8 @@ class BrothServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__.'/publish/test_publish.php' => config_path('broth.php')
+        ], 'config');
     }
 }
