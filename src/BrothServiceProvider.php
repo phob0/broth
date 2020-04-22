@@ -14,7 +14,7 @@ class BrothServiceProvider extends ServiceProvider
     public function register()
     {
 
-	$this->app->register(Phobo\Broth\BrothServiceProvider::class);
+	//$this->app->register(Phobo\Broth\BrothServiceProvider::class);
         
 	$this->commands([
             Console\ModuleMake::class,
