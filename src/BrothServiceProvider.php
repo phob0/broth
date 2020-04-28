@@ -15,6 +15,8 @@ class BrothServiceProvider extends ServiceProvider
     {
 
 	//$this->app->register(Phobo\Broth\BrothServiceProvider::class);
+
+    $this->mergeConfigFrom(__DIR__.'/publish/test_publish.php', 'test_publish');
         
 	$this->commands([
             Console\ModuleMake::class,
