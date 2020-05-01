@@ -1,10 +1,10 @@
 {
-    "name": "phobo/test-publish",
+    "name": "phobo/broth",
     "minimum-stability": "dev",
     "require": {},
     "autoload": {
         "psr-4": {
-            "Phobo\\TestPublish\\": "src"
+            "Phobo\\Broth\\": "src"
         }
     }
 }

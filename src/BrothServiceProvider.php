@@ -1,10 +1,10 @@
 <?php
 
-namespace Phobo\TestPublish;
+namespace Phobo\Broth;
 
 use Illuminate\Support\ServiceProvider;
 
-class TestPublishServiceProvider extends ServiceProvider
+class BrothServiceProvider extends ServiceProvider
 {
     public function boot()
     {
@@ -21,8 +21,8 @@ class TestPublishServiceProvider extends ServiceProvider
 
     public function register()
     {
-        if (class_exists('Phobo\TestPublish\TestPublishServiceProvider')) {
-            $this->app->register('Phobo\TestPublish\TestPublishServiceProvider');
+        if (class_exists('Phobo\Broth\BrothServiceProvider')) {
+            $this->app->register('Phobo\Broth\BrothServiceProvider');
         }
 
         $this->mergeConfigFrom(__DIR__.'/../config/translatable.php', 'translatable');

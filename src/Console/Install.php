@@ -1,6 +1,6 @@
 <?php
 
-namespace Phobo\TestPublish\Console;
+namespace Phobo\Broth\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -49,7 +49,7 @@ class Install extends Command
         $this->progressBar->advance();
 
         $this->line(' Publishing configs, langs, views and VueJS/QuasarJS files');
-        $this->executeProcess('php artisan vendor:publish --provider="Phobo\TestPublish\TestPublishServiceProvider"');
+        $this->executeProcess('php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"');
 
         // $this->line(" Generating users table (using Laravel's default migrations)");
         // $this->executeProcess('php artisan migrate');
