@@ -1,6 +1,6 @@
 <?php
 
-namespace Phobo\Broth\Console;
+namespace Phobo\TestPublish\Console;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;

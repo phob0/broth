@@ -1,17 +1,10 @@
 {
-    "name": "phobo/broth",
-    "description": "No description",
-    "authors": [
-        {
-            "name": "phob0",
-            "email": "ph0bo@protonmail.com"
-        }
-    ],
+    "name": "phobo/test-publish",
     "minimum-stability": "dev",
     "require": {},
-        "autoload": {
+    "autoload": {
         "psr-4": {
-            "Phobo\\Broth\\": "src"
+            "Phobo\\TestPublish\\": "src"
         }
     }
 }

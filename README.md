@@ -1,7 +1,3 @@
-# broth
+# test-publish
 
-# composer require phobo/broth
-
-# php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"
-
-# enjoy
+php artisan vendor:publish --provider="Phobo\TestPublish\TestPublishServiceProvider"

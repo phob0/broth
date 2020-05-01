@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Phobo\Broth\Console;
+namespace Phobo\TestPublish\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;

@@ -1,9 +1,9 @@
 <?php
 
 
-namespace Phobo\Broth\Editables;
+namespace Phobo\TestPublish\Editables;
 
-use Phobo\Broth\Editables\EditableModel;
+use Phobo\TestPublish\Editables\EditableModel;
 
 class EditableRepository
 {
