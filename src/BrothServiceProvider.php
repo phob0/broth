@@ -21,9 +21,9 @@ class BrothServiceProvider extends ServiceProvider
 
     public function register()
     {
-        if (class_exists('Phobo\Broth\BrothServiceProvider')) {
-            $this->app->register('Phobo\Broth\BrothServiceProvider');
-        }
+        // if (class_exists('Phobo\Broth\BrothServiceProvider')) {
+        //     $this->app->register('Phobo\Broth\BrothServiceProvider');
+        // }
 
         $this->mergeConfigFrom(__DIR__.'/../config/translatable.php', 'translatable');
 
