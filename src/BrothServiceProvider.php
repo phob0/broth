@@ -9,7 +9,7 @@ class BrothServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/translatable.php' => config_path('translatable.php'),
+            __DIR__.'/../config/broth.php' => config_path('broth.php'),
         ], 'config');
 
         $this->publishes([
@@ -26,7 +26,7 @@ class BrothServiceProvider extends ServiceProvider
             return new Broth($app);
         });
 
-        $this->mergeConfigFrom(__DIR__.'/../config/translatable.php', 'translatable');
+        $this->mergeConfigFrom(__DIR__.'/../config/broth.php', 'broth');
 
 	   $this->commands([
             Console\Install::class,

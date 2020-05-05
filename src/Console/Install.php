@@ -43,14 +43,15 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->progressBar = $this->output->createProgressBar(8);
+        $this->progressBar = $this->output->createProgressBar(2);
         $this->progressBar->start();
         $this->info(" Phobo installation started. Please wait...");
         $this->progressBar->advance();
 
         $this->line(' Publishing configs, langs, views and VueJS/QuasarJS files');
         $this->executeProcess('php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"');
-
+        $this->progressBar->advance();
+        
         // $this->line(" Generating users table (using Laravel's default migrations)");
         // $this->executeProcess('php artisan migrate');
 
