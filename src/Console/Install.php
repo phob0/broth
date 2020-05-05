@@ -43,7 +43,7 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->progressBar = $this->output->createProgressBar(4);
+        $this->progressBar = $this->output->createProgressBar(3);
         $this->progressBar->start();
         $this->info(" Phobo installation started. Please wait...");
         $this->progressBar->advance();
@@ -53,14 +53,22 @@ class Install extends Command
         $this->progressBar->advance();
 
         $this->line(' Installing VueJS/QuasarJS files');
-        $this->executeProcess('npm install');
+        $path = base_path('frontend');
+        $status = 0;
+        $response = [];
+        if (!$debug) {
+            unset($response);
+        }
+        exec("cd $path && PATH=\$PATH:\$(pwd)/node_modules/.bin yarn install", $response, $status);
+
+        $this->line($response);
         $this->progressBar->advance();
         
         // $this->line(" Generating users table (using Laravel's default migrations)");
         // $this->executeProcess('php artisan migrate');
 
         $this->progressBar->finish();
-        $this->info(" Phobo installation finished.");
+        $this->info(' Phobo installation finished.');
     }
 
     /**
