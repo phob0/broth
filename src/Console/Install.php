@@ -56,9 +56,6 @@ class Install extends Command
         $path = base_path('frontend');
         $status = 0;
         $response = [];
-        if (!$debug) {
-            unset($response);
-        }
         exec("cd $path && PATH=\$PATH:\$(pwd)/node_modules/.bin yarn install", $response, $status);
 
         $this->line($response);
