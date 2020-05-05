@@ -21,13 +21,14 @@ class BrothServiceProvider extends ServiceProvider
 
     public function register()
     {
-        if (class_exists('Phobo\Broth\BrothServiceProvider')) {
-            $this->app->register('Phobo\Broth\BrothServiceProvider');
-        }
+        // register the current package
+        $this->app->bind('broth', function ($app) {
+            return new Broth($app);
+        });
 
         $this->mergeConfigFrom(__DIR__.'/../config/translatable.php', 'translatable');
 
-	$this->commands([
+	   $this->commands([
             Console\Install::class,
             Console\ModuleMake::class,
             Console\ControllerMake::class,
