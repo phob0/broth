@@ -1,10 +1,10 @@
 {
   "name": "chr-b2b",
   "version": "0.0.1",
-  "description": "An esperity.com app",
-  "productName": "Esperity DYADIC",
-  "cordovaId": "com.esperity.spa.dyadic",
-  "author": "Costin Bereveanu <cbereveanu@gmail.com>",
+  "description": "Phobo Broth frontend framework",
+  "productName": "Phobo Broth",
+  "cordovaId": "com.phobo.spa.broth",
+  "author": "costin & serban",
   "private": true,
   "scripts": {
     "build": "quasar build",

@@ -16,7 +16,7 @@
         <q-toolbar-title>
           <router-link
             class="kps-dashboard-link"
-            :to="{ name: 'dashboard' }">Esperity <span class="text-weight-bold">DYADIC</span></router-link>
+            :to="{ name: 'dashboard' }">Phobo <span class="text-weight-bold">Broth</span></router-link>
         </q-toolbar-title>
 
         <div v-if="user">

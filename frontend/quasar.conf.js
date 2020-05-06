@@ -112,8 +112,8 @@ module.exports = function(ctx) {
       // workboxPluginMode: 'InjectManifest',
       // workboxOptions: {}, // only for NON InjectManifest
       manifest: {
-        // name: 'Esperity Dyadic',
-        // short_name: 'Esperity Dyadic',
+        // name: 'Phobo Broth',
+        // short_name: 'Broth',
         // description: 'A Quasar Framework app',
         display: 'standalone',
         orientation: 'portrait',
@@ -150,7 +150,7 @@ module.exports = function(ctx) {
     },
 
     cordova: {
-      // id: 'com.esperity.spa.dyadic',
+      // id: 'com.phobo.spa.broth',
       // noIosLegacyBuildFlag: true, // uncomment only if you know what you are doing
     },
 

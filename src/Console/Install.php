@@ -43,7 +43,7 @@ class Install extends Command
      */
     public function handle()
     {
-        $this->progressBar = $this->output->createProgressBar(3);
+        $this->progressBar = $this->output->createProgressBar(6);
         $this->progressBar->start();
         $this->info(" Phobo installation started. Please wait...");
         $this->progressBar->advance();
@@ -61,8 +61,13 @@ class Install extends Command
         $this->line($response);
         $this->progressBar->advance();
         
-        // $this->line(" Generating users table (using Laravel's default migrations)");
-        // $this->executeProcess('php artisan migrate');
+        $this->line(" Generating tables (using Laravel's default migrations)");
+        $this->executeProcess('php artisan migrate');
+        $this->progressBar->advance();
+
+        $this->line(" Seeding tables (using Laravel's default migrations)");
+        $this->executeProcess('php artisan db:seed');
+        $this->progressBar->advance();
 
         $this->progressBar->finish();
         $this->info(' Phobo installation finished.');
