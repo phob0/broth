@@ -14,6 +14,8 @@ const routes = [
       { path: 'users', name: 'user.listing', component: () => import(/* webpackChunkName: 'app_users' */ 'pages/user/UserListingPage.vue') },
       { path: 'users/create', name: 'user.create', component: () => import(/* webpackChunkName: 'app_users' */ 'pages/user/UserPage.vue') },
       { path: 'users/:id', name: 'user.edit', component: () => import(/* webpackChunkName: 'app_users' */ 'pages/user/UserPage.vue') }
+    ]
+  }   
 ]
 
 // Always leave this as last one
