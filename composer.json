@@ -2,7 +2,9 @@
     "name": "phobo/broth",
     "description": "Phobo Broth layer framework",
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "laravel/passport": "^7.5"
+    },
     "autoload": {
         "psr-4": {
             "Phobo\\Broth\\": "src"
