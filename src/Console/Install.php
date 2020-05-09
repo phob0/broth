@@ -61,10 +61,6 @@ class Install extends Command
 
         $this->line($response);
         $this->progressBar->advance();
-
-        $this->line(" Installing laravel passport");
-        $this->executeProcess('php artisan passport:install');
-        $this->progressBar->advance();
         
         $this->line(" Generating tables (using Laravel's default migrations)");
         $this->executeProcess('php artisan migrate');
@@ -72,6 +68,10 @@ class Install extends Command
 
         $this->line(" Seeding tables (using Laravel's default migrations)");
         $this->executeProcess('php artisan db:seed');
+        $this->progressBar->advance();
+
+        $this->line(" Installing laravel passport");
+        $this->executeProcess('php artisan passport:install');
         $this->progressBar->advance();
 
         $this->progressBar->finish();
