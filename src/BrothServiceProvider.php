@@ -13,6 +13,10 @@ class BrothServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
+            __DIR__.'/../config/auth.php' => config_path('auth.php'),
+        ], 'config');
+
+        $this->publishes([
             __DIR__.'/../.env' => base_path('.env'),
         ], '');
 
@@ -114,7 +118,9 @@ class BrothServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/../config/broth.php', 'broth');
 
-	   $this->commands([
+        $this->mergeConfigFrom(__DIR__.'/../config/auth.php', 'auth');
+
+	    $this->commands([
             Console\Install::class,
             Console\ModuleMake::class,
             Console\ControllerMake::class,

@@ -45,6 +45,7 @@ class Install extends Command
     {
         $this->progressBar = $this->output->createProgressBar(6);
         $this->progressBar->start();
+        $this->progressBar->advance();
         $this->info(" Phobo installation started. Please wait...");
         $this->progressBar->advance();
 
@@ -59,6 +60,10 @@ class Install extends Command
         exec("cd $path && npm install", $response, $status);
 
         $this->line($response);
+        $this->progressBar->advance();
+
+        $this->line(" Installing laravel passport");
+        $this->executeProcess('php artisan passport:install');
         $this->progressBar->advance();
         
         $this->line(" Generating tables (using Laravel's default migrations)");
