@@ -20,6 +20,16 @@ class BrothServiceProvider extends ServiceProvider
             __DIR__.'/../.env' => base_path('.env'),
         ], '');
 
+        //Traits
+
+        $this->publishes([
+            __DIR__.'/../laravel/Traits/HandlesUserRoles.php' => base_path().'/app/Traits/HandlesUserRoles.php',
+        ], 'controllers');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Traits/OutputsConsoleData.php' => base_path().'/app/Traits/OutputsConsoleData.php',
+        ], 'controllers');
+
         //Controllers
 
         $this->publishes([
@@ -101,7 +111,7 @@ class BrothServiceProvider extends ServiceProvider
         //Seeder
 
         $this->publishes([
-            __DIR__.'/../laravel/seeds/DatabaseSeeder.php' => base_path().'/app/database/seeds/DatabaseSeeder.php',
+            __DIR__.'/../laravel/seeds/DatabaseSeeder.php' => base_path().'/database/seeds/DatabaseSeeder.php',
         ], 'seeds');
 
         //Frontend
@@ -119,6 +129,14 @@ class BrothServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/broth.php', 'broth');
 
         $this->mergeConfigFrom(__DIR__.'/../config/auth.php', 'auth');
+
+        $this->loadRoutesFrom(__DIR__.'/../laravel/routes/api.php');
+
+        $this->loadMigrationsFrom(__DIR__.'/../laravel/migrations/2014_10_12_000000_create_users_table.php');
+
+        $this->loadMigrationsFrom(__DIR__.'/../laravel/migrations/2019_08_07_124134_create_settings_table.php');
+
+        $this->loadMigrationsFrom(__DIR__.'/../laravel/migrations/2019_08_19_182451_create_user_roles_table.php');
 
 	    $this->commands([
             Console\Install::class,

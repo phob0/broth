@@ -3,7 +3,8 @@
     "description": "Phobo Broth layer framework",
     "minimum-stability": "dev",
     "require": {
-        "laravel/passport": "^7.5"
+        "laravel/passport": "^7.5",
+        "barryvdh/laravel-cors": "^0.11"
     },
     "autoload": {
         "psr-4": {
