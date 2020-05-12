@@ -50,7 +50,7 @@ class Install extends Command
         $this->progressBar->advance();
 
         $this->line(' Publishing configs, langs, views and VueJS/QuasarJS files');
-        $this->executeProcess('php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider"');
+        $this->executeProcess('php artisan vendor:publish --provider="Phobo\Broth\BrothServiceProvider" --force');
         $this->progressBar->advance();
 
         $this->line(' Installing VueJS/QuasarJS files');
@@ -62,20 +62,23 @@ class Install extends Command
         $this->line($response);
         $this->progressBar->advance();
         
+        $q = $this->ask('Need to run artisan from different enviorment? Type it here or leave empty for default.');
+        $env = $q === '' ? 'php' : $q;
+
         $this->line(" Generating tables (using Laravel's default migrations)");
-        $this->executeProcess('php artisan migrate');
+        $this->executeProcess($env.' artisan migrate');
         $this->progressBar->advance();
 
-        // $this->line(" Seeding tables (using Laravel's default migrations)");
-        // $this->executeProcess('php artisan db:seed');
-        // $this->progressBar->advance();
+        $this->line(" Seeding tables (using Laravel's default migrations)");
+        $this->executeProcess($env.' artisan db:seed');
+        $this->progressBar->advance();
 
-        // $this->line(" Installing laravel passport");
-        // $this->executeProcess('php artisan passport:install');
-        // $this->progressBar->advance();
+        $this->line(" Installing laravel passport");
+        $this->executeProcess($env.' artisan passport:install');
+        $this->progressBar->advance();
 
         $this->progressBar->finish();
-        $this->info(' Phobo installation finished.');
+        $this->info(' Phobo installation finished. Please migrate and seed.');
     }
 
     /**

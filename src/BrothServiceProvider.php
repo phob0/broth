@@ -44,6 +44,41 @@ class BrothServiceProvider extends ServiceProvider
             __DIR__.'/../laravel/Controllers/UserController.php' => base_path().'/app/Http/Controllers/UserController.php',
         ], 'controllers');
 
+
+        //Controllers
+
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/Authenticate.php' => base_path().'/app/Http/Middleware/Authenticate.php',
+        ], 'middleware');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/CheckForMaintenanceMode.php' => base_path().'/app/Http/Middleware/CheckForMaintenanceMode.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/EncryptCookies.php' => base_path().'/app/Http/Middleware/EncryptCookies.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/ExtractApiTokenFromCookie.php' => base_path().'/app/Http/Middleware/ExtractApiTokenFromCookie.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/RedirectIfAuthenticated.php' => base_path().'/app/Http/Middleware/RedirectIfAuthenticated.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/TrimStrings.php' => base_path().'/app/Http/Middleware/TrimStrings.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/TrustProxies.php' => base_path().'/app/Http/Middleware/TrustProxies.php',
+        ], 'middleware');
+        
+        $this->publishes([
+            __DIR__.'/../laravel/Middleware/VerifyCsrfToken.php' => base_path().'/app/Http/Middleware/VerifyCsrfToken.php',
+        ], 'middleware');
+
         //Resources
 
         $this->publishes([
@@ -93,6 +128,12 @@ class BrothServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../laravel/Setting.php' => base_path().'/app/Setting.php',
         ], 'models');
+
+        //Kernel
+
+        $this->publishes([
+            __DIR__.'/../laravel/Kernel.php' => base_path().'/app/Http/Kernel.php',
+        ], 'kernel');
 
         //Migrations
 
