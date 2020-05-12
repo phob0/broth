@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Phobo\Broth\Editables;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EditableController extends Controller

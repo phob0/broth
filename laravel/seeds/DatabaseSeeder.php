@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
             	'name' => 'Phobo',
             	'email' => 'phobo@broth.ro',
             	'phone' => '1',
-            	'password' => \\Hash::make('phobo'),
+            	'password' => \Hash::make('phobo'),
             ]);
             $record->roles()->create([
             	'role' => 'superadmin',

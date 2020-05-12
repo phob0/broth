@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Phobo\Broth\Editables;
 
 use Illuminate\Database\Eloquent\Model;
 

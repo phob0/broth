@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Phobo\TestPublish\Editables;
+namespace Phobo\Broth\Editables;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
