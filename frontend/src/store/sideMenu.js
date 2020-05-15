@@ -9,21 +9,6 @@ export function superadmin(id) {
     link: null,
     target: null
   }, {
-    code: 'locations',
-    label: 'Locations',
-    icon: 'fal fa-thumbtack',
-    route: { name: 'location.listing' }
-  }, {
-    code: 'medical_conditions',
-    label: 'Medical Conditions',
-    icon: 'fal fa-file-medical-alt',
-    route: { name: 'medicalCondition.listing' }
-  }, {
-    code: 'regional_responsibles',
-    label: 'Regional Responsibles',
-    icon: 'fal fa-globe-europe',
-    route: { name: 'user.listing', query: { role: 'responsible' } }
-  }, {
     code: 'users',
     label: 'Users',
     caption: 'User accounts',
@@ -77,16 +62,6 @@ export function responsible(id) {
     children: [],
     link: null,
     target: null
-  }, {
-    code: 'intervention_nurses',
-    label: 'Intervention Nurses',
-    icon: 'fal fa-user-nurse',
-    route: { name: 'user.listing', query: { role: 'nurse' } }
-  }, {
-    code: 'data_collectors',
-    label: 'Data Collectors',
-    icon: 'fal fa-user-chart',
-    route: { name: 'user.listing', query: { role: 'collector' } }
   }, {
     code: 'settings',
     label: 'Settings',

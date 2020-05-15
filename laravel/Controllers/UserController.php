@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Phobo\Broth\Editables\EditableController;
 use App\Http\Resources\UserResource;
 use App\Repositories\UserRepository;
 use App\User;

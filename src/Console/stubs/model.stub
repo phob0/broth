@@ -3,6 +3,7 @@
 namespace App;
 
 use Spatie\Translatable\HasTranslations;
+use Phobo\Broth\Editables\EditableModel;
 
 class {{ class }} extends EditableModel
 {

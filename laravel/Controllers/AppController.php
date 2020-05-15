@@ -14,7 +14,7 @@ class AppController extends Controller
 
         return [
             'user' => $user ? UserResource::make($user) : null,
-            'version' => \Version::compact(),
+            //'version' => \Version::compact(),
             'locales' => config('translatable.locales'),
             'defaultLocale' => \App::getLocale(),
         ];

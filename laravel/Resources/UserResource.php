@@ -2,9 +2,11 @@
 
 
 namespace App\Http\Resources;
+
 use App\Http\Resources\LocationResource;
 use App\Repositories\LocationRepository;
 use App\User;
+use Phobo\Broth\Editables\EditableResource;
 
 
 class UserResource extends EditableResource

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Phobo\Broth\Editables\EditableModel;
 use App\Traits\HandlesUserRoles;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\MustVerifyEmail;

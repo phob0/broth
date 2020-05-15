@@ -16,9 +16,13 @@ class ExtractApiTokenFromCookie
      */
     public function handle($request, Closure $next)
     {
-        if ($token = $request->get('api_token')) {
+        if ($request->headers->get('Authorization')) {
+            // already have a token
+        } else if ($token = $request->get('api_token')) {
+            // pass token through URL
             $request->headers->set('Authorization', 'Bearer ' . $token);
         } else if ($request->cookie('app_auth')) { // ignore any Authorization tokens
+            // retrieve token from cookie
             $request->headers->set('Authorization', 'Bearer ' . $request->cookie('app_auth'));
         }
 

@@ -6,6 +6,7 @@ use App\Http\Resources\DummyResource;
 use App\Repositories\DummyRepository;
 use App\Dummy;
 use Illuminate\Http\Request;
+use Phobo\Broth\Editables\EditableController;
 
 class {{ class }} extends EditableController
 {

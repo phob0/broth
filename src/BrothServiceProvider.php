@@ -33,11 +33,15 @@ class BrothServiceProvider extends ServiceProvider
         //Controllers
 
         $this->publishes([
+            __DIR__.'/../laravel/Controllers/Controller.php' => base_path().'/app/Http/Controllers/Controller.php',
+        ], 'controllers');
+
+        $this->publishes([
             __DIR__.'/../laravel/Controllers/AppController.php' => base_path().'/app/Http/Controllers/AppController.php',
         ], 'controllers');
 
         $this->publishes([
-            __DIR__.'/../laravel/Controllers/SettingController.php' => base_path().'/app/Http/Controllers/SettingController.php',
+            __DIR__.'/../laravel/Controllers/SettingsController.php' => base_path().'/app/Http/Controllers/SettingsController.php',
         ], 'controllers');
 
         $this->publishes([
@@ -45,7 +49,7 @@ class BrothServiceProvider extends ServiceProvider
         ], 'controllers');
 
 
-        //Controllers
+        //Middleware
 
         $this->publishes([
             __DIR__.'/../laravel/Middleware/Authenticate.php' => base_path().'/app/Http/Middleware/Authenticate.php',
@@ -99,6 +103,28 @@ class BrothServiceProvider extends ServiceProvider
             __DIR__.'/../laravel/Policies/UserPolicy.php' => base_path().'/app/Policies/UserPolicy.php',
         ], 'policies');
 
+        //Providers
+
+        $this->publishes([
+            __DIR__.'/../laravel/Providers/AppServiceProvider.php' => base_path().'/app/Providers/AppServiceProvider.php',
+        ], 'privoder');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Providers/AuthServiceProvider.php' => base_path().'/app/Providers/AuthServiceProvider.php',
+        ], 'privoder');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Providers/BroadcastServiceProvider.php' => base_path().'/app/Providers/BroadcastServiceProvider.php',
+        ], 'privoder');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Providers/EventServiceProvider.php' => base_path().'/app/Providers/EventServiceProvider.php',
+        ], 'privoder');
+
+        $this->publishes([
+            __DIR__.'/../laravel/Providers/RouteServiceProvider.php' => base_path().'/app/Providers/RouteServiceProvider.php',
+        ], 'privoder');
+
         //Repositories
 
         $this->publishes([
@@ -113,6 +139,10 @@ class BrothServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../laravel/routes/api.php' => base_path().'/routes/api.php',
+        ], 'routes');
+
+        $this->publishes([
+            __DIR__.'/../laravel/routes/web.php' => base_path().'/routes/web.php',
         ], 'routes');
 
         //Models
@@ -170,8 +200,6 @@ class BrothServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/broth.php', 'broth');
 
         $this->mergeConfigFrom(__DIR__.'/../config/auth.php', 'auth');
-
-        $this->loadRoutesFrom(__DIR__.'/../laravel/routes/api.php');
 
         $this->loadMigrationsFrom(__DIR__.'/../laravel/migrations/2014_10_12_000000_create_users_table.php');
 

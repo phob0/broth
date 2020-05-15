@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Phobo\Broth\Editables\EditableRepository;
 
 class UserRepository extends EditableRepository
 {

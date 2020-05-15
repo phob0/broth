@@ -8,6 +8,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Phobo\Broth\Editables\EditableRepository;
 
 class SettingsRepository extends EditableRepository
 {

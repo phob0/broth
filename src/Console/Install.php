@@ -62,16 +62,16 @@ class Install extends Command
         $this->line($response);
         $this->progressBar->advance();
         
-        $q = $this->ask('Need to run artisan from different enviorment? Type it here or leave empty for default.');
-        $env = $q === '' ? 'php' : $q;
+        // $q = $this->ask('Need to run artisan from different enviorment? Type it here or leave empty for default.');
+        // $env = $q === '' ? 'php' : $q;
 
-        $this->line(" Generating tables (using Laravel's default migrations)");
-        $this->executeProcess($env.' artisan migrate');
-        $this->progressBar->advance();
+        // $this->line(" Generating tables (using Laravel's default migrations)");
+        // $this->executeProcess($env.' artisan migrate');
+        // $this->progressBar->advance();
 
-        $this->line(" Seeding tables (using Laravel's default migrations)");
-        $this->executeProcess($env.' artisan db:seed');
-        $this->progressBar->advance();
+        // $this->line(" Seeding tables (using Laravel's default migrations)");
+        // $this->executeProcess($env.' artisan db:seed');
+        // $this->progressBar->advance();
 
         $this->line(" Installing laravel passport");
         $this->executeProcess($env.' artisan passport:install');

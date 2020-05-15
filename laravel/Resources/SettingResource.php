@@ -2,6 +2,8 @@
 
 namespace App\Http\Resources;
 
+use Phobo\Broth\Editables\EditableResource;
+
 
 
 class SettingResource extends EditableResource
