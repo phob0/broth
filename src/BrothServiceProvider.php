@@ -80,6 +80,7 @@ class BrothServiceProvider extends ServiceProvider
 	    $this->commands([
             Console\Install::class,
             Console\DemoMake::class,
+            Console\DemoControllerMake::class,
             Console\ModuleMake::class,
             Console\ControllerMake::class,
             Console\RepositoryMake::class,
