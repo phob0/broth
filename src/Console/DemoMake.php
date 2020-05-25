@@ -45,7 +45,7 @@ class DemoMake extends Command
      */
     public function handle()
     {
-        foreach($demos as $demo) {
+        foreach($this->demos as $demo) {
             $this->call('broth:demoController', [
                 'name' => $demo
             ]);
