@@ -3,6 +3,7 @@
 namespace Phobo\Broth;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Routing\Router;
 
 class BrothServiceProvider extends ServiceProvider
 {
@@ -20,120 +21,6 @@ class BrothServiceProvider extends ServiceProvider
             __DIR__.'/../.env' => base_path('.env'),
         ], '');
 
-        //Traits
-
-        $this->publishes([
-            __DIR__.'/../laravel/Traits/HandlesUserRoles.php' => base_path().'/app/Traits/HandlesUserRoles.php',
-        ], 'controllers');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Traits/OutputsConsoleData.php' => base_path().'/app/Traits/OutputsConsoleData.php',
-        ], 'controllers');
-
-        //Controllers
-
-        $this->publishes([
-            __DIR__.'/../laravel/Controllers/Controller.php' => base_path().'/app/Http/Controllers/Controller.php',
-        ], 'controllers');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Controllers/AppController.php' => base_path().'/app/Http/Controllers/AppController.php',
-        ], 'controllers');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Controllers/SettingsController.php' => base_path().'/app/Http/Controllers/SettingsController.php',
-        ], 'controllers');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Controllers/UserController.php' => base_path().'/app/Http/Controllers/UserController.php',
-        ], 'controllers');
-
-
-        //Middleware
-
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/Authenticate.php' => base_path().'/app/Http/Middleware/Authenticate.php',
-        ], 'middleware');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/CheckForMaintenanceMode.php' => base_path().'/app/Http/Middleware/CheckForMaintenanceMode.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/EncryptCookies.php' => base_path().'/app/Http/Middleware/EncryptCookies.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/ExtractApiTokenFromCookie.php' => base_path().'/app/Http/Middleware/ExtractApiTokenFromCookie.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/RedirectIfAuthenticated.php' => base_path().'/app/Http/Middleware/RedirectIfAuthenticated.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/TrimStrings.php' => base_path().'/app/Http/Middleware/TrimStrings.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/TrustProxies.php' => base_path().'/app/Http/Middleware/TrustProxies.php',
-        ], 'middleware');
-        
-        $this->publishes([
-            __DIR__.'/../laravel/Middleware/VerifyCsrfToken.php' => base_path().'/app/Http/Middleware/VerifyCsrfToken.php',
-        ], 'middleware');
-
-        //Resources
-
-        $this->publishes([
-            __DIR__.'/../laravel/Resources/SettingResource.php' => base_path().'/app/Http/Resources/SettingResource.php',
-        ], 'resource');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Resources/UserResource.php' => base_path().'/app/Http/Resources/UserResource.php',
-        ], 'resource');
-
-        //Policies
-
-        $this->publishes([
-            __DIR__.'/../laravel/Policies/SettingPolicy.php' => base_path().'/app/Policies/SettingPolicy.php',
-        ], 'policies');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Policies/UserPolicy.php' => base_path().'/app/Policies/UserPolicy.php',
-        ], 'policies');
-
-        //Providers
-
-        $this->publishes([
-            __DIR__.'/../laravel/Providers/AppServiceProvider.php' => base_path().'/app/Providers/AppServiceProvider.php',
-        ], 'privoder');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Providers/AuthServiceProvider.php' => base_path().'/app/Providers/AuthServiceProvider.php',
-        ], 'privoder');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Providers/BroadcastServiceProvider.php' => base_path().'/app/Providers/BroadcastServiceProvider.php',
-        ], 'privoder');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Providers/EventServiceProvider.php' => base_path().'/app/Providers/EventServiceProvider.php',
-        ], 'privoder');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Providers/RouteServiceProvider.php' => base_path().'/app/Providers/RouteServiceProvider.php',
-        ], 'privoder');
-
-        //Repositories
-
-        $this->publishes([
-            __DIR__.'/../laravel/Repositories/SettingRepository.php' => base_path().'/app/Repositories/SettingRepository.php',
-        ], 'repositories');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Repositories/UserRepository.php' => base_path().'/app/Repositories/UserRepository.php',
-        ], 'repositories');
 
         //Routes
 
@@ -144,26 +31,6 @@ class BrothServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../laravel/routes/web.php' => base_path().'/routes/web.php',
         ], 'routes');
-
-        //Models
-
-        $this->publishes([
-            __DIR__.'/../laravel/User.php' => base_path().'/app/User.php',
-        ], 'models');
-
-        $this->publishes([
-            __DIR__.'/../laravel/UserRole.php' => base_path().'/app/UserRole.php',
-        ], 'models');
-
-        $this->publishes([
-            __DIR__.'/../laravel/Setting.php' => base_path().'/app/Setting.php',
-        ], 'models');
-
-        //Kernel
-
-        $this->publishes([
-            __DIR__.'/../laravel/Kernel.php' => base_path().'/app/Http/Kernel.php',
-        ], 'kernel');
 
         //Migrations
 
@@ -188,6 +55,9 @@ class BrothServiceProvider extends ServiceProvider
         //Frontend
 
         $this->publishes([__DIR__.'/../frontend' => base_path('frontend')], 'frontend');
+
+        $this->setupMorphMap();
+        self::setupCustomCache();
     }
 
     public function register()
@@ -209,11 +79,59 @@ class BrothServiceProvider extends ServiceProvider
 
 	    $this->commands([
             Console\Install::class,
+            Console\DemoMake::class,
             Console\ModuleMake::class,
             Console\ControllerMake::class,
             Console\RepositoryMake::class,
             Console\ModelMake::class,
             Console\ResourceMake::class
         ]);
+
+        $this->registerMiddlewareGroup($this->app->router);
+    }
+
+    public function registerMiddlewareGroup(Router $router)
+    {
+        $middleware_class = config('broth.api_route_middleware');
+
+        foreach($middleware_class as $type) {
+
+            if($type === 'push') {
+                if (!is_array($type)) {
+                    $router->pushMiddlewareToGroup('api', $type);
+
+                    return;
+                }
+
+                foreach ($type as $class) {
+                    $router->pushMiddlewareToGroup('api', $class);
+                }
+            } else {
+                if (!is_array($type)) {
+                    $router->prependMiddlewareToGroup('api', $type);
+
+                    return;
+                }
+
+                foreach ($type as $class) {
+                    $router->prependMiddlewareToGroup('api', $class);
+                }
+            }
+        }
+        
+    }
+
+    private function setupMorphMap()
+    {
+        Relation::morphMap([
+            'user' => \App\User::class,
+        ]);
+    }
+
+    public static function setupCustomCache()
+    {
+        Cache::extend('tagged_file', function ($app) {
+            return Cache::repository(new TaggedFile($app['files'], $app['config']['cache.stores.tagged_file']['path']));
+        });
     }
 }

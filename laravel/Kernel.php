@@ -39,10 +39,12 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \App\Http\Middleware\ExtractApiTokenFromCookie::class, // this needs to go before any other middleware that
+            // might use authentication
             'throttle:120,1',
-            \App\Http\Middleware\ExtractApiTokenFromCookie::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+            \Barryvdh\Cors\HandleCors::class
         ],
     ];
 

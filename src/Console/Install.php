@@ -64,7 +64,8 @@ class Install extends Command
         
         // $q = $this->ask('Need to run artisan from different enviorment? Type it here or leave empty for default.');
         // $env = $q === '' ? 'php' : $q;
-
+        //cd resources/views && ln -s public/index/html resources/views/index.php
+        exec("cd resources/views && ln -s public/index/html resources/views/index.php");
         // $this->line(" Generating tables (using Laravel's default migrations)");
         // $this->executeProcess($env.' artisan migrate');
         // $this->progressBar->advance();
@@ -74,7 +75,7 @@ class Install extends Command
         // $this->progressBar->advance();
 
         $this->line(" Installing laravel passport");
-        $this->executeProcess($env.' artisan passport:install');
+        $this->executeProcess('php artisan passport:install');
         $this->progressBar->advance();
 
         $this->progressBar->finish();

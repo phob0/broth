@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::transaction(function () use ($data) {
+        DB::transaction(function () {
             $record = User::create([
             	'name' => 'Phobo',
             	'email' => 'phobo@broth.ro',

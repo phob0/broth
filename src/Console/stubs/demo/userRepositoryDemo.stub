@@ -8,8 +8,8 @@ use App\User;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Phobo\Broth\Editables\EditableRepository;
 use Phobo\Broth\Editables\EditableModel;
+use Phobo\Broth\Editables\EditableRepository;
 
 class UserRepository extends EditableRepository
 {
@@ -46,8 +46,7 @@ class UserRepository extends EditableRepository
         if (!empty($params['filters']['name'])) {
             $query->where(function($q) use ($params) {
                 $q
-                    ->where('users.first_name', 'LIKE', $params['filters']['name'] . '%')
-                    ->orWhere('users.last_name', 'LIKE', $params['filters']['name'] . '%')
+                    ->where('users.name', 'LIKE', $params['filters']['name'] . '%')
                 ;
             });
         }
@@ -75,10 +74,10 @@ class UserRepository extends EditableRepository
         }
 
         return $query
-            ->get(['users.id', 'users.first_name', 'users.last_name', 'ur.role as role_name'])
+            ->get(['users.id', 'users.name', 'ur.role as role_name'])
             ->map(function($record) {
                 return [
-                    'label' => $record->first_name . ' ' . $record->last_name,
+                    'label' => $record->name,
                     'value' => $record->id,
                     'role' => $record->role_name,
                 ];
