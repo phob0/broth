@@ -24,8 +24,8 @@ class DemoMake extends Command
     protected $description = 'Create a new broth module';
 
     protected $demos = [
-        'UserController',
-        'SettingsController'
+        'User',
+        'Setting'
     ];
 
     /**
@@ -47,7 +47,19 @@ class DemoMake extends Command
     {
         foreach($this->demos as $demo) {
             $this->call('broth:demoController', [
+                'name' => $demo.'Controller'
+            ]);
+            $this->call('broth:demoModel', [
                 'name' => $demo
+            ]);
+            // $this->call('broth:demoPolicy', [
+            //     'name' => $demo.'Policy'
+            // ]);
+            $this->call('broth:demoRepository', [
+                'name' => $demo.'Repository'
+            ]);
+            $this->call('broth:demoResource', [
+                'name' => $demo.'Resource'
             ]);
         }
     }

@@ -21,10 +21,10 @@ Route::middleware('auth:api')->group(function() {
     Route::post('upload', 'AppController@upload');
 
     Route::prefix('settings')->group(function() {
-        Route::get('', 'SettingsController@list');
-        Route::get('{setting}', 'SettingsController@item');
-        Route::post('', 'SettingsController@create');
-        Route::put('{setting}', 'SettingsController@update');
+        Route::get('', 'SettingController@list');
+        Route::get('{setting}', 'SettingController@item');
+        Route::post('', 'SettingController@create');
+        Route::put('{setting}', 'SettingController@update');
     });
 
     Route::prefix('users')->group(function() {
