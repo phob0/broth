@@ -95,7 +95,7 @@ class DemoControllerMake extends GeneratorCommand
      */
     protected function getStub()
     {
-        return  $this->argument('name') === 'User' ? $this->resolveStubPath('/stubs/demo/userControllerDemo.stub') : $this->resolveStubPath('/stubs/demo/settingControllerDemo.stub');
+        return  $this->argument('name') === 'UserController' ? $this->resolveStubPath('/stubs/demo/userControllerDemo.stub') : $this->resolveStubPath('/stubs/demo/settingControllerDemo.stub');
     }
 
     /**
