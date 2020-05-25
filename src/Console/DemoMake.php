@@ -24,8 +24,8 @@ class DemoMake extends Command
     protected $description = 'Create a new broth module';
 
     protected $demos = [
-        'User',
-        'Settings'
+        'UserController',
+        'SettingsController'
     ];
 
     /**
