@@ -2,6 +2,7 @@
 
 namespace Phobo\Broth;
 
+use Illuminate\Database\Eloquent\Relations;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
 
@@ -124,7 +125,7 @@ class BrothServiceProvider extends ServiceProvider
 
     private function setupMorphMap()
     {
-        Relation::morphMap([
+        Relations::morphMap([
             'user' => \App\User::class,
         ]);
     }
