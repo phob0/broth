@@ -2,6 +2,7 @@
 
 namespace Phobo\Broth;
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\Router;
