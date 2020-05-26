@@ -49,9 +49,11 @@ class DemoMake extends Command
             $this->call('broth:demoController', [
                 'name' => $demo.'Controller'
             ]);
-            $this->call('broth:demoModel', [
-                'name' => $demo
-            ]);
+            if($demo === 'Setting') {
+                $this->call('broth:demoModel', [
+                    'name' => $demo
+                ]);
+            }
             $this->call('broth:demoPolicy', [
                 'name' => $demo.'Policy'
             ]);

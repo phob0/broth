@@ -24,6 +24,16 @@ class BrothServiceProvider extends ServiceProvider
         ], '');
 
 
+        //Models
+
+        $this->publishes([
+            __DIR__.'/../laravel/User.php' => base_path().'/app/User.php',
+        ], 'models');
+
+        $this->publishes([
+            __DIR__.'/../laravel/UserRole.php' => base_path().'/app/UserRole.php',
+        ], 'models');
+
         //Routes
 
         $this->publishes([
@@ -60,6 +70,7 @@ class BrothServiceProvider extends ServiceProvider
 
         $this->setupMorphMap();
         self::setupCustomCache();
+        $this->registerMiddlewareGroup($this->app->router);
     }
 
     public function register()
@@ -95,7 +106,6 @@ class BrothServiceProvider extends ServiceProvider
             Console\ResourceMake::class
         ]);
 
-        $this->registerMiddlewareGroup($this->app->router);
     }
 
     public function registerMiddlewareGroup(Router $router)
