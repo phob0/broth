@@ -83,13 +83,15 @@ class BrothServiceProvider extends ServiceProvider
             Console\Install::class,
             Console\DemoMake::class,
             Console\DemoControllerMake::class,
-            Console\DemoModuleMake::class,
+            Console\DemoModelMake::class,
+            Console\DemoPolicyMake::class,
             Console\DemoRepositoryMake::class,
             Console\DemoResourceMake::class,
             Console\ModuleMake::class,
             Console\ControllerMake::class,
             Console\RepositoryMake::class,
             Console\ModelMake::class,
+            Console\PolicyMake::class,
             Console\ResourceMake::class
         ]);
 

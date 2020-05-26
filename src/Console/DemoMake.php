@@ -52,9 +52,9 @@ class DemoMake extends Command
             $this->call('broth:demoModel', [
                 'name' => $demo
             ]);
-            // $this->call('broth:demoPolicy', [
-            //     'name' => $demo.'Policy'
-            // ]);
+            $this->call('broth:demoPolicy', [
+                'name' => $demo.'Policy'
+            ]);
             $this->call('broth:demoRepository', [
                 'name' => $demo.'Repository'
             ]);
