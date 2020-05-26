@@ -5,7 +5,7 @@ namespace Phobo\Broth\Console;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ModelMake extends GeneratorCommand
+class DemoModelMake extends GeneratorCommand
 {
     /**
      * The name and signature of the console command.
